@@ -1,0 +1,9 @@
+<?php
+clearstatcache();
+session_start();
+unset($_SESSION['MemberID']);
+unset($_SESSION['AdminID']);
+unset($_SESSION['OwnerID']);
+unset($_SESSION['name']);
+header("Location:index.php");
+?>
