@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 06, 2023 at 05:21 PM
+-- Generation Time: Feb 27, 2023 at 11:47 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.4
 
@@ -33,7 +33,8 @@ CREATE TABLE `admin` (
   `FName` varchar(40) NOT NULL,
   `LName` varchar(40) NOT NULL,
   `Username` varchar(40) NOT NULL,
-  `Password` varchar(40) NOT NULL
+  `Password` varchar(40) NOT NULL,
+  `GroupID` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -47,7 +48,8 @@ CREATE TABLE `member` (
   `FName` varchar(40) NOT NULL,
   `LName` varchar(40) NOT NULL,
   `Username` varchar(40) NOT NULL,
-  `Password` varchar(40) NOT NULL
+  `Password` varchar(40) NOT NULL,
+  `GroupID` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -61,7 +63,8 @@ CREATE TABLE `owner` (
   `FName` varchar(40) NOT NULL,
   `LName` varchar(40) NOT NULL,
   `Username` varchar(40) NOT NULL,
-  `Password` varchar(40) NOT NULL
+  `Password` varchar(40) NOT NULL,
+  `GroupID` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -73,21 +76,24 @@ CREATE TABLE `owner` (
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`AdminID`),
-  ADD UNIQUE KEY `Username` (`Username`);
+  ADD UNIQUE KEY `Username` (`Username`),
+  ADD KEY `GroupID` (`GroupID`);
 
 --
 -- Indexes for table `member`
 --
 ALTER TABLE `member`
   ADD PRIMARY KEY (`MemberID`),
-  ADD UNIQUE KEY `Username` (`Username`);
+  ADD UNIQUE KEY `Username` (`Username`),
+  ADD KEY `GroupID` (`GroupID`);
 
 --
 -- Indexes for table `owner`
 --
 ALTER TABLE `owner`
   ADD PRIMARY KEY (`OwnerID`),
-  ADD UNIQUE KEY `Username` (`Username`);
+  ADD UNIQUE KEY `Username` (`Username`),
+  ADD KEY `GroupID` (`GroupID`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -110,6 +116,28 @@ ALTER TABLE `member`
 --
 ALTER TABLE `owner`
   MODIFY `OwnerID` int(3) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `admin`
+--
+ALTER TABLE `admin`
+  ADD CONSTRAINT `admin_ibfk_1` FOREIGN KEY (`GroupID`) REFERENCES `groups` (`GroupID`);
+
+--
+-- Constraints for table `member`
+--
+ALTER TABLE `member`
+  ADD CONSTRAINT `member_ibfk_1` FOREIGN KEY (`GroupID`) REFERENCES `groups` (`GroupID`);
+
+--
+-- Constraints for table `owner`
+--
+ALTER TABLE `owner`
+  ADD CONSTRAINT `owner_ibfk_1` FOREIGN KEY (`GroupID`) REFERENCES `groups` (`GroupID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
