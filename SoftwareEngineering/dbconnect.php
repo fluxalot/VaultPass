@@ -4,7 +4,7 @@
 $servername = "localhost";
 $username = "mahadev";
 $password = "mahadev";
-$dbname = "VaultPass";
+$dbname = "vaultpass";
 $conn;
 
 // APIs 
