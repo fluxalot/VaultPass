@@ -21,13 +21,13 @@
         <?php
         session_start();
         ?>
-        <div class="p-5 bg-dark text-white text-center">
-            <img src="Arkenflux_logo.png" class="rounded-circle" style="max-width:10%;" alt="Logo">
+        <div class="p-5 bg-warning text-dark text-center">
+            <img src="logo.png" style="max-width:10%;" alt="Logo">
             <h1>VaultPass</h1>
             <p class="fst-italic">SUBTITLE HERE</p>
         </div>
 
-        <nav class="navbar navbar-expand-sm bg-secondary navbar-dark">
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
             <div class="container-fluid">
                 <ul class="navbar-nav">
                     <li class="nav-item">
@@ -47,9 +47,12 @@
                     <?php elseif (isset($_SESSION['OwnerID'])): ?>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="modifyMembers.php">Add / Delete Staff</a>
+                            
                         </li>
                     <?php else: ?>
-                        
+                        <li>
+                            <a class="nav-link text-white" href="manageGroups.php">Manage Groups</a>
+                        </li>
                     <?php endif; ?>
                 </ul>
             </div>

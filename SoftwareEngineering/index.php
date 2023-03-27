@@ -34,7 +34,7 @@ if (isset($_GET['msg'])) {
         <h3>
             Body
         </h3>
-        <img src="biohacking.jpg" alt="biohacking" class="center">
+
 
     </body>
 </html>
