@@ -5,7 +5,8 @@
         <group>
             <file>file:/J:/SoftwareEngineering/index.php</file>
             <file>file:/J:/SoftwareEngineering/manageGroups.php</file>
-            <file>file:/J:/SoftwareEngineering/vaultpass.sql</file>
+            <file>file:/J:/SoftwareEngineering/deleteGroup.php</file>
+            <file>file:/J:/SoftwareEngineering/createGroup_Action.php</file>
             <file>file:/J:/SoftwareEngineering/header.php</file>
         </group>
     </open-files>

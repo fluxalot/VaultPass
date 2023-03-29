@@ -1,7 +1,7 @@
 <?php
 include 'header.php';
 require 'DBConnect.php';
-$sql = "select Name, OwnerID from groups";
+$sql = "select Name, OwnerID, GroupID from groups";
 $result = queryDB($sql);
 $colCount = 0;
 ?>
@@ -31,11 +31,12 @@ if (gettype($result) == "object") {
         while ($row = $result->fetch_assoc()) {
             $colCount += 1;
             $Name = $row['Name'];
+            $GroupID = $row['GroupID'];
             ?>
             <div class="col card">
                 <div class="card-body">
                     <h4 class="card-title"><?php echo $Name ?></h4>
-                        <a href="deleteGroup.php" class="card-link">Delete Group</a>
+                        <a href="deleteGroup.php?GroupID=<?php echo $GroupID ?>"  id="deleteGroup" class="card-link">Delete Group</a>
                         <a href="#" class="card-link">Add Members</a>
                 </div>
             </div>
