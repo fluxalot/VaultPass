@@ -24,7 +24,9 @@
         <div class="p-5 bg-warning text-dark text-center">
             <img src="logo.png" style="max-width:10%;" alt="Logo">
             <h1>VaultPass</h1>
+
             <p class="fst-italic">Share. Secure. Simple.</p>
+
         </div>
 
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark">

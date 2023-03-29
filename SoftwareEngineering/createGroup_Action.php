@@ -18,6 +18,7 @@ for ($i = 0; $i < 32; $i++) {
 // CHANGE SO IT GETS ACTUAL OWNER ID ONCE LOGINS ARE SETUP
 $sql = "insert into groups values (0, '" . $randomString . "', '" . $name . "', 1)";
 
+
 // Insert data into the Database
 echo modifyDB($sql);
 

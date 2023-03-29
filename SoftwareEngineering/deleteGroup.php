@@ -5,6 +5,7 @@ require "dbconnect.php";
 
 // sql to delete a record
 // UPDATE TO DELETE THE CORRESPONDING GROUP
+
 $GroupID = $_GET['GroupID'];
 $sql = "DELETE FROM groups WHERE GroupID=$GroupID";
 
