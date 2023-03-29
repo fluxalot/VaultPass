@@ -30,11 +30,10 @@ if (isset($_GET['msg'])) {
         }
     </style>
     <body>
-        <h4>Title</h4>
+        <h4>Safety starts here</h4>
         <h3>
-            Body
+            Share passwords with your family, friends, and employees throughout
+            by creating groups and adding the passwords you use everyday.
         </h3>
-        <img src="biohacking.jpg" alt="biohacking" class="center">
-
     </body>
 </html>
