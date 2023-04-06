@@ -1,9 +1,10 @@
 <?php
-
+include 'header.php';
 require "dbconnect.php";
 
 // collect form data
 $name = $_GET["Name"];
+$UserID = $_SESSION['OwnerID'];
 
 // generate salt
 $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -14,10 +15,8 @@ for ($i = 0; $i < 32; $i++) {
 }
 
 // Crete sql statement for inserting this data into the database
-//$sql = "insert into register values (0, salt, name, OwnerID)";
-// CHANGE SO IT GETS ACTUAL OWNER ID ONCE LOGINS ARE SETUP
-$sql = "insert into groups values (0, '" . $randomString . "', '" . $name . "', 1)";
-
+//$sql = "insert into register values (0, salt, name, UserID)";
+$sql = "insert into groups values (0, '" . $randomString . "', '" . $name . "', '" . $UserID . "')";
 
 // Insert data into the Database
 echo modifyDB($sql);
