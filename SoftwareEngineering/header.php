@@ -24,9 +24,7 @@
         <div class="p-5 bg-warning text-dark text-center">
             <img src="logo.png" style="max-width:10%;" alt="Logo">
             <h1>VaultPass</h1>
-
             <p class="fst-italic">Share. Secure. Simple.</p>
-
         </div>
 
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -35,27 +33,12 @@
                     <li class="nav-item">
                         <a class="nav-link text-white" href="index.php">Home</a>
                     </li>
-                    <?php if (isset($_SESSION['MemberID'])): ?>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#">MemberPageHere</a>
+                            <a class="nav-link text-white" href="modifyMembers.php">Add / Delete Staff</a>       
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="profile_customer.php">Edit Profile</a>
-                        </li>
-                    <?php elseif (isset($_SESSION['AdminID'])): ?>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="#">AdminPageHere</a>
-                        </li>
-                    <?php elseif (isset($_SESSION['OwnerID'])): ?>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="modifyMembers.php">Add / Delete Staff</a>
-                            
-                        </li>
-                    <?php else: ?>
                         <li>
                             <a class="nav-link text-white" href="manageGroups.php">Manage Groups</a>
                         </li>
-                    <?php endif; ?>
                 </ul>
             </div>
 
