@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 13, 2023 at 08:46 PM
+-- Generation Time: Apr 10, 2023 at 05:21 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.4
 
@@ -40,6 +40,27 @@ CREATE TABLE `admin` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `groups`
+--
+
+CREATE TABLE `groups` (
+  `GroupID` int(3) NOT NULL,
+  `Salt` varchar(40) NOT NULL,
+  `Name` varchar(40) NOT NULL,
+  `OwnerID` int(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `groups`
+--
+
+INSERT INTO `groups` (`GroupID`, `Salt`, `Name`, `OwnerID`) VALUES
+(1, 'RwausDAdVkJ2vcsl4K9mAJsiyo7zDjec', 'groupname', 1),
+(2, 'cFO7hY877OHL5WJjNMgJMNAKqMpOFesJ', 'eek', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `member`
 --
 
@@ -51,6 +72,13 @@ CREATE TABLE `member` (
   `Password` varchar(40) NOT NULL,
   `GroupID` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `member`
+--
+
+INSERT INTO `member` (`MemberID`, `FName`, `LName`, `Username`, `Password`, `GroupID`) VALUES
+(1, 'test', 'test', 'test', 'test', 2);
 
 -- --------------------------------------------------------
 
@@ -67,6 +95,26 @@ CREATE TABLE `owner` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Dumping data for table `owner`
+--
+
+INSERT INTO `owner` (`OwnerID`, `FName`, `LName`, `Username`, `Password`) VALUES
+(1, 'fname_test', 'lname_test', 'uname_test', 'pass_test');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `password`
+--
+
+CREATE TABLE `password` (
+  `PasswordID` int(3) NOT NULL,
+  `Name` varchar(40) NOT NULL,
+  `SaltedPassword` varchar(40) NOT NULL,
+  `GroupID` int(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
 -- Indexes for dumped tables
 --
 
@@ -77,6 +125,13 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`AdminID`),
   ADD UNIQUE KEY `Username` (`Username`),
   ADD KEY `GroupID` (`GroupID`);
+
+--
+-- Indexes for table `groups`
+--
+ALTER TABLE `groups`
+  ADD PRIMARY KEY (`GroupID`),
+  ADD KEY `OwnerID` (`OwnerID`);
 
 --
 -- Indexes for table `member`
@@ -94,6 +149,13 @@ ALTER TABLE `owner`
   ADD UNIQUE KEY `Username` (`Username`);
 
 --
+-- Indexes for table `password`
+--
+ALTER TABLE `password`
+  ADD PRIMARY KEY (`PasswordID`),
+  ADD KEY `GroupID` (`GroupID`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -104,16 +166,28 @@ ALTER TABLE `admin`
   MODIFY `AdminID` int(3) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `groups`
+--
+ALTER TABLE `groups`
+  MODIFY `GroupID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
-  MODIFY `MemberID` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `MemberID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `owner`
 --
 ALTER TABLE `owner`
-  MODIFY `OwnerID` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `OwnerID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `password`
+--
+ALTER TABLE `password`
+  MODIFY `PasswordID` int(3) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
@@ -126,10 +200,22 @@ ALTER TABLE `admin`
   ADD CONSTRAINT `admin_ibfk_1` FOREIGN KEY (`GroupID`) REFERENCES `groups` (`GroupID`);
 
 --
+-- Constraints for table `groups`
+--
+ALTER TABLE `groups`
+  ADD CONSTRAINT `groups_ibfk_1` FOREIGN KEY (`OwnerID`) REFERENCES `owner` (`OwnerID`);
+
+--
 -- Constraints for table `member`
 --
 ALTER TABLE `member`
   ADD CONSTRAINT `member_ibfk_1` FOREIGN KEY (`GroupID`) REFERENCES `groups` (`GroupID`);
+
+--
+-- Constraints for table `password`
+--
+ALTER TABLE `password`
+  ADD CONSTRAINT `password_ibfk_1` FOREIGN KEY (`GroupID`) REFERENCES `groups` (`GroupID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
