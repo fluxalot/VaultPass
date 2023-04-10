@@ -1,14 +1,22 @@
 <?php
-
+include 'header.php';
 require "dbconnect.php";
 
 // collect form data
 $name = $_GET["Name"];
+$UserID = $_SESSION['OwnerID'];
+
+// generate salt
+$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+$randomString = '';
+for ($i = 0; $i < 32; $i++) {
+    $index = rand(0, strlen($characters) - 1);
+    $randomString .= $characters[$index];
+}
 
 // Crete sql statement for inserting this data into the database
-//$sql = "insert into register values (0, salt, name, OwnerID)";
-// CHANGE SO IT GETS ACTUAL OWNER ID AND GENERATES SALT
-$sql = "insert into groups values (0, 0, '" . $name . "', 1)";
+//$sql = "insert into register values (0, salt, name, UserID)";
+$sql = "insert into groups values (0, '" . $randomString . "', '" . $name . "', '" . $UserID . "')";
 
 // Insert data into the Database
 echo modifyDB($sql);
@@ -28,5 +36,5 @@ if (gettype($result) == "object") {
     echo "No data found.<br>";
 } else
   echo $result . "<br>";
-
+header("location:index.php?msg=Group Created");
 ?>

@@ -1,7 +1,7 @@
 <?php
 include 'header.php';
 require 'DBConnect.php';
-$sql = "select Name, OwnerID from groups";
+$sql = "select Name, OwnerID, GroupID from groups";
 $result = queryDB($sql);
 $colCount = 0;
 ?>
@@ -31,15 +31,19 @@ if (gettype($result) == "object") {
         while ($row = $result->fetch_assoc()) {
             $colCount += 1;
             $Name = $row['Name'];
-            ?>
-            <div class="col card">
-                <div class="card-body">
-                    <h4 class="card-title"><?php echo $Name ?></h4>
-                        <a href="deleteGroup.php" class="card-link">Delete Group</a>
-                        <a href="#" class="card-link">Add Members</a>
+            $GroupID = $row['GroupID'];
+            $OwnerID = $row['OwnerID'];
+            if ($GroupID != 1 && $OwnerID == $_SESSION["OwnerID"]) {
+                ?>
+                <div class="col card">
+                    <div class="card-body">
+                        <h4 class="card-title"><?php echo $Name ?></h4>
+                            <a href="deleteGroup.php?GroupID=<?php echo $GroupID ?>"  id="deleteGroup" class="card-link">Delete Group</a>
+                            <a href="manageMembers.php?GroupID=<?php echo $GroupID ?>"  id="manageMember" class="card-link" class="card-link">Manage Members</a>
+                    </div>
                 </div>
-            </div>
-            <?php
+                <?php
+            }
             if ($colCount % 5 == 0) {
                 echo '</div><div class="row">';
             }
