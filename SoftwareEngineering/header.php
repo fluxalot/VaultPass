@@ -60,6 +60,8 @@
                         <li><a class="dropdown-item" href="signin_member.php">Member Login</a></li>
                         <li><a class="dropdown-item" href="signin_admin.php">Admin Login</a></li>
                         <li><a class="dropdown-item" href="signin_owner.php">Owner Login</a></li>
+						<li><a class="dropdown-item" href="registration.php">Create Account</a></li>
+						
                     </ul>
                 </div>
             <?php endif; ?>

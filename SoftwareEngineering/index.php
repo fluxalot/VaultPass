@@ -1,3 +1,4 @@
+
 <?php
 include 'header.php';
 if (isset($_GET['msg'])) {
@@ -35,5 +36,8 @@ if (isset($_GET['msg'])) {
             Share passwords with your family, friends, and employees throughout
             by creating groups and adding the passwords you use everyday.
         </h3>
+		<a href="ChangePW.php">Forgot Password? Clicke here to reset it.</a>
+
+		
     </body>
 </html>
