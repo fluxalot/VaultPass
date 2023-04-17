@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -47,15 +48,17 @@
             </div>
 
             <?php
-            if (isset($_SESSION['name'])):
+                if (isset($_SESSION['name'])):
                 echo "<h2>Welcome</h2>" . $_SESSION['name'];
                 ?>
                 <div class="w3-right ms-auto mx-5">
-                    <form class="form-inline" name="logout" action="logoutAction.php" method="post">
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-danger btn-block">Logout</button>
-                        </div>
-                    </form>
+                     <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">options</a>
+                    <ul class="dropdown-menu ">
+                        <li><a class="dropdown-item" href="modifyMembers.php">modify member access</a></li>
+                        <li><a class="dropdown-item" href="modifyPasswords.php">modify passwords</a></li>
+                        <li><a class="dropdown-item" href="logoutAction.php">log out</a></li>
+                    </ul>
+                    
                 </div>
             <?php else: ?>    
                 <div class="nav-item dropdown ms-auto mx-5">

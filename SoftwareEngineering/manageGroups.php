@@ -32,18 +32,15 @@ if (gettype($result) == "object") {
             $colCount += 1;
             $Name = $row['Name'];
             $GroupID = $row['GroupID'];
-            $OwnerID = $row['OwnerID'];
-            if ($GroupID != 1 && $OwnerID == $_SESSION["OwnerID"]) {
-                ?>
-                <div class="col card">
-                    <div class="card-body">
-                        <h4 class="card-title"><?php echo $Name ?></h4>
-                            <a href="deleteGroup.php?GroupID=<?php echo $GroupID ?>"  id="deleteGroup" class="card-link">Delete Group</a>
-                            <a href="manageMembers.php?GroupID=<?php echo $GroupID ?>"  id="manageMember" class="card-link" class="card-link">Manage Members</a>
-                    </div>
+            ?>
+            <div class="col card">
+                <div class="card-body">
+                    <h4 class="card-title"><?php echo $Name ?></h4>
+                        <a href="deleteGroup.php?GroupID=<?php echo $GroupID ?>"  id="deleteGroup" class="card-link">Delete Group</a>
+                        <a href="#" class="card-link">Add Members</a>
                 </div>
-                <?php
-            }
+            </div>
+            <?php
             if ($colCount % 5 == 0) {
                 echo '</div><div class="row">';
             }
