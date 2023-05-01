@@ -35,6 +35,9 @@
                         <a class="nav-link text-white" href="index.php">Home</a>
                     </li>
                     <?php if (isset($_SESSION["OwnerID"])): ?>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="modifyMembers.php">Add / Delete Staff</a>       
+                        </li>
                         <li>
                             <a class="nav-link text-white" href="manageGroups.php">Manage Groups</a>
                         </li>
