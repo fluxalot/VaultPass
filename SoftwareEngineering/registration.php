@@ -1,7 +1,7 @@
 <?php include 'header.php'; ?>
 
 <?php
-require_once('dbconnect.php');
+require ('dbconnect.php');
 ?>
 
 <!DOCTYPE html>
@@ -17,14 +17,28 @@ require_once('dbconnect.php');
 <div>
 
 
+
+
 <?php
+ini_set('display_errors', 1);
+
+$servername = "localhost";
+$username = "bjones";
+$password = "password";
+$dbname = "vaultpass";
+
+// Create connection
+$db = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+// set the PDO error mode to exception
+$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  $fname = $_POST['fname'];
-  $lname = $_POST['lname'];
-  $email = $_POST['email'];
-  $password = $_POST['password'];
-  $confirm_password = $_POST['confirm_password'];
+	$fname = $_POST['fname'];
+	$lname = $_POST['lname'];
+	$email = $_POST['email'];
+	$password = $_POST['password'];
+	$confirm_password = $_POST['confirm_password'];
 
   if ($password === $confirm_password) {
     $salt = "randomSalt123";
@@ -32,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $sql = "INSERT INTO member(FName, Lname, Username, Password) VALUES(?,?,?,?)";
     $stmtinsert = $db->prepare($sql);
     $stmtinsert->execute([$fname, $lname, $email, $password]);
-    $_SESSION['OwnerID'] = $OwnerID;
+    //$_SESSION['OwnerID'] = $OwnerID;
     $_SESSION['name'] = $fname . " " . $lname;
     echo 'Success!';
   } else {

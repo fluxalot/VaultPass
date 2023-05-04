@@ -2,8 +2,8 @@
 
 //connection string
 $servername = "localhost";
-$username = "mahadev";
-$password = "mahadev";
+$username = "bjones";
+$password = "";
 $dbname = "vaultpass";
 $conn;
 
@@ -19,7 +19,7 @@ function openDB() {
     return "Connected";
 
 // Alternative code using PDO object. Need similar changes to other API as well.
-/*
+
   try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     // set the PDO error mode to exception
@@ -28,7 +28,7 @@ function openDB() {
   } catch (PDOException $e) {
     return $e->getMessage();
   }
-*/
+
 }
 
 function closeDB() {

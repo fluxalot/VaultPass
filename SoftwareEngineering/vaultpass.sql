@@ -44,12 +44,12 @@ CREATE TABLE `admin` (
 --
 
 CREATE TABLE `member` (
-  `MemberID` int(3) NOT NULL,
+  `MemberID` int(3),
   `FName` varchar(40) NOT NULL,
   `LName` varchar(40) NOT NULL,
   `Username` varchar(40) NOT NULL,
   `Password` varchar(40) NOT NULL,
-  `GroupID` int(3) NOT NULL
+  `GroupID` int(3)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
