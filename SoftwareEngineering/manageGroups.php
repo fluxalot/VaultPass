@@ -43,6 +43,7 @@ if (gettype($result) == "object") {
                 </div>
             </div>
             <?php
+            }
             if ($colCount % 5 == 0) {
                 echo '</div><div class="row">';
             }
