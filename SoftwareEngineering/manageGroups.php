@@ -37,7 +37,7 @@ if (gettype($result) == "object") {
                 <div class="card-body">
                     <h4 class="card-title"><?php echo $Name ?></h4>
                         <a href="deleteGroup.php?GroupID=<?php echo $GroupID ?>"  id="deleteGroup" class="card-link">Delete Group</a>
-                        <a href="#" class="card-link">Add Members</a>
+                        <a href="manageMembers.php?GroupID=<?php echo $GroupID ?>"  id="manageMember" class="card-link" class="card-link">Manage Members</a>
                 </div>
             </div>
             <?php
