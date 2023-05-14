@@ -4,7 +4,7 @@ require 'DBConnect.php';
 $sql = "select Name, OwnerID, GroupID from groups";
 $result = queryDB($sql);
 $colCount = 0;
-?>
+?> 
 
 <style>
     button {
