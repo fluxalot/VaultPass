@@ -14,6 +14,8 @@
             <input type="password" class="form-control" id="pswd" placeholder="Enter password" name="Password" required>
             <div class="valid-feedback">Valid.</div>
             <div class="invalid-feedback">Please fill out this field.</div>
+				
+
         </div>  
         <button type="submit" class="btn btn-dark">Submit</button>
     </form>
