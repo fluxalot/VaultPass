@@ -8,7 +8,7 @@ $adminResult = queryDB($sql);
 $colCount = 0;
 $adminColCount = 0;
 $GroupID = $_GET['GroupID'];
-?>
+?> 
 
 <style>
     button {
